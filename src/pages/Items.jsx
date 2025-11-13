@@ -80,7 +80,7 @@ export default function Items() {
             {q.trim() === '' ? (
                 <div className="empty-search">
                     <img
-                        src="https://cdn-icons-png.flaticon.com/512/4221/4221419.png"
+                        src="/book-search.png"
                         alt="search"
                     />
                     <h3>Start exploring 📚</h3>
