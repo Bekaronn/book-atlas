@@ -17,9 +17,6 @@ export default function Items() {
     const [page, setPage] = useState(pageParam)
     const [totalPages, setTotalPages] = useState(1)
 
-    const [authorFilter, setAuthorFilter] = useState('')
-    const [yearFilter, setYearFilter] = useState('')
-
     useEffect(() => {
         let mounted = true
         if (!q.trim()) {
@@ -38,7 +35,7 @@ export default function Items() {
                 if (!mounted) return
                 setItems(res.docs || [])
                 const numFound = res.numFound || 0
-                setTotalPages(Math.ceil(numFound / 10))
+                setTotalPages(Math.ceil(numFound / 20))
             })
             .catch((err) => {
                 if (!mounted) return
@@ -67,16 +64,6 @@ export default function Items() {
         setSearchParams(params)
     }
 
-    const filteredItems = items.filter((it) => {
-        const authorMatch = authorFilter
-            ? it.author_name?.some((a) =>
-                a.toLowerCase().includes(authorFilter.toLowerCase())
-            )
-            : true
-        const yearMatch = yearFilter ? it.first_publish_year === parseInt(yearFilter) : true
-        return authorMatch && yearMatch
-    })
-
     return (
         <div className="items-page">
             <h2 className="page-title">Discover Books</h2>
@@ -101,30 +88,14 @@ export default function Items() {
                 </div>
             ) : (
                 <>
-                    <div className="filter-row">
-                        <input
-                            className="filter-input"
-                            placeholder="Filter by author"
-                            value={authorFilter}
-                            onChange={(e) => setAuthorFilter(e.target.value)}
-                        />
-                        <input
-                            className="filter-input"
-                            type="number"
-                            placeholder="Filter by year"
-                            value={yearFilter}
-                            onChange={(e) => setYearFilter(e.target.value)}
-                        />
-                    </div>
-
                     {loading && <Spinner />}
                     {error && <ErrorBox>{error}</ErrorBox>}
 
                     {!loading && !error && (
                         <>
                             <div className="items-grid">
-                                {filteredItems.length === 0 && <p className="no-results">No matching results.</p>}
-                                {filteredItems.map((it) => (
+                                {items.length === 0 && <p className="no-results">No matching results.</p>}
+                                {items.map((it) => (
                                     <Card key={it.id} item={{ ...it, id: it.id }} />
                                 ))}
                             </div>
