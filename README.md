@@ -1,16 +1,68 @@
-# React + Vite
+# 📚 BookAtlas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**BookAtlas** — это React-приложение для поиска и просмотра книг с помощью [OpenLibrary API](https://openlibrary.org/developers/api).  
+Приложение демонстрирует работу с роутингом, компонентной структурой и модульной организацией кода.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Функциональность
 
-## React Compiler
+- 🔍 **Поиск книг** — по названию, автору или ключевому слову (`/books?q=value`)  
+- 📘 **Детали книги** — описание, авторы, темы, места, время, даты создания и изменения  
+- 🎨 **Адаптивный и чистый интерфейс**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧩 Структура страниц (Routing)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Путь | Компонент | Описание |
+|------|------------|-----------|
+| `/` | **Home** | Главная страница с описанием и картинкой |
+| `/about` | **About** | Информация о проекте |
+| `/books` | **Items** | Поиск и список книг |
+| `/books/:id` | **ItemDetails** | Подробности книги |
+| `/login` | **Login** | Заглушка для будущей авторизации |
+
+---
+
+## 🛠️ Технологии
+
+| Технология | Назначение |
+|-------------|------------|
+| **React (Vite)** | Базовый фреймворк |
+| **React Router DOM** | Клиентский роутинг |
+| **Fetch API** | Получение данных из OpenLibrary |
+| **CSS / Flexbox** | Оформление и адаптивность |
+| **OpenLibrary API** | Источник данных о книгах и авторах |
+
+---
+
+## ⚙️ Установка и запуск
+
+1. **Клонировать репозиторий**
+```bash
+git clone https://github.com/yourusername/bookatlas.git
+cd bookatlas
+```
+
+2. **Установить зависимости**
+```bash
+npm install
+```
+
+3. **Запустить проект**
+```bash
+npm run dev
+```
+
+---
+
+## 🖼️ Скриншоты
+
+<div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+  <img src="screenshots/1.png" alt="App.jsx (Router setup)" width="32%">
+  <img src="screenshots/3.png" alt="Главная страница BookAtlas" width="32%">
+  <img src="screenshots/2.png" alt="Результаты поиска" width="32%">
+</div>
+
+
